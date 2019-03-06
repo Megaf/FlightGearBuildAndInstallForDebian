@@ -1,14 +1,35 @@
 #!/bin/bash
 
+# Author: Megaf Cassini (mmegaf <at> gmail <dot> com)
+# License: MGF License https://gist.github.com/Megaf/a4a131027db7deb612c71556886a300a
+
+## ABOUT
+# Greetings, this script will download and compile PLib, OpenSceneGraph, SimGear and FlightGear from their SVN/Git repos.
+# They will be located at your home/Downloads folder.
+
+# This is a rather stupid script, no checks are done yet, it is just a sequence of commands.
+# Read the commends on the script to lear more about it.
+
+
+## TODO
+# Make it KISS
+# Make it do checks
+
+# alias to make sure Release will be default build type for everything, more flags can me added here as well.
 alias cmake="cmake -DCMAKE_BUILD_TYPE=Release"
 
+# Variable to set where FlighGear will be "installed.
 export FG_INSTALL_DIR=$HOME/Downloads/FlightGear
+# Variable to set where the source code will be downloaded to.
 export FG_SRC_DIR=$HOME/Downloads/FlightGear_Sources
+# Variable to use ccache in case you have it installed, it will greatly speed rebuilds.
 export PATH=/usr/lib/ccache:$PATH
 
+# Creating Install and Download directories.
 mkdir $FG_INSTALL_DIR
 mkdir $FG_SRC_DIR
 
+# Setting branch/versions for stuff.
 OSGVER="OpenSceneGraph-3.6.3"
 SGVER="next"
 FGVER="next"
